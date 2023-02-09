@@ -3,6 +3,11 @@
 // 2. Convert each of them to valid html
 // 3. Take that valid HTML string, and insert into the Jinja pages template
 // 4. Thats it!
+const YAML = require('yaml')
+
+function generate_pages(YAML, md){
+    
+}
 
 function markdown_to_html(markdown){
     // split the markdown file into yaml and markdown
@@ -14,15 +19,16 @@ function markdown_to_html(markdown){
         }
     }
     // get the yaml part
-    yaml=markdown.substring(0,end_of_yaml+3);
+    yaml=markdown.substring(0,end_of_yaml);
     // get the markdown part
     md=markdown.substring(end_of_yaml+3,markdown.length);
 
-    console.log(yaml);
-
+    // individual yaml variables can be accessed with the . operator
+    parsed_YAML = YAML.parse(yaml);
     // now we have the yaml and the markdown, we can convert into jinja 
-}
 
+    generate_pages(parsed_YAML,md);
+}
 
 // get the path of the /articles, which stores all the markdown files 
 const path=require('path');
@@ -51,7 +57,7 @@ fs.readdir(articles_dir,(err,files)=>{
 }
 )
 
-
+// find out how to link media 
 
 // var showdown  = require('showdown'),
 //     converter = new showdown.Converter(),
