@@ -1,10 +1,9 @@
-{% extend "base.jinja" %}
-{% block content %}
-    {{title}}
+{% extends "base.html" %}
+{% block body %}
+    {{page_title}}
     {{author}}
     {{draft_status}}
     {{category}}
-    {{date}}
     </hr>
     {{content}}
 {% endblock %}

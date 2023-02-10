@@ -4,9 +4,40 @@
 // 3. Take that valid HTML string, and insert into the Jinja pages template
 // 4. Thats it!
 const YAML = require('yaml')
+const njk = require('nunjucks')
 
-function generate_pages(YAML, md){
-    
+function generate_pages(){
+    // generate all pages from /pages that are not base.njk or page.njk
+
+    // get the path of the /pages, which stores all the markdown files
+    const path=require('path');
+    let pages_dir=path.join(__dirname,'../', 'pages');
+    console.log(pages_dir);//move one step back from current directory
+
+    // for loop through all the files in the pages directory
+    const fs=require('fs');
+    fs.readdir(pages_dir,(err,files)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+            files.forEach(file=>{
+                // check if the file is a base or page file
+                if(path.extname(file)=='.njk' && file!='base.njk' && file!='page.njk'){
+
+                    //LEFT OFF HERE 
+                    nunjucks.configure('views', { autoescape: true });
+                    nunjucks.render('index.html', { foo: 'bar' });
+                }
+            })
+        }
+    }
+    )
+
+
+}
+
+function generate_articles(YAML, md){
 }
 
 function markdown_to_html(markdown){
@@ -29,6 +60,9 @@ function markdown_to_html(markdown){
 
     generate_pages(parsed_YAML,md);
 }
+
+// generate the base pages first
+generate_pages()
 
 // get the path of the /articles, which stores all the markdown files 
 const path=require('path');
