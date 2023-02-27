@@ -39,8 +39,9 @@ function generate_pages(){
 function generate_articles(parsed_YAML, md){
     converter = new showdown.Converter();
     html = converter.makeHtml(md);
-    content = nunjucks.render(pages_dir + '/page.njk', {content: html});
-    console.log(parsed_YAML);
+    nunjucks.configure(pages_dir, { autoescape: true });
+    content = nunjucks.render('page.njk', {content: html});
+    console.log(content);
     fs.writeFile(generated_dir + '/' + parsed_YAML.page_title + '.html', content, (error) => { "something went wrong"});
 }
 

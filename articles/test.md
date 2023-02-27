@@ -13,6 +13,7 @@ test test test test test test
 test test test
 test test test
 
+![Drag Racing](Dragster.jpg)
 
 test test test
 test test test
