@@ -13,7 +13,7 @@ test test test test test test
 test test test
 test test test
 
-![Drag Racing](Dragster.jpg)
+![Drag Racing](../static/img/Dragster.jpg)
 
 test test test
 test test test
