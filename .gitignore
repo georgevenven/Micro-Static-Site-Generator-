@@ -3,3 +3,5 @@ node_modules
 generated
 package-lock.json
 package.json
+static/img/
+static/js/
